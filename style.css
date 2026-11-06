@@ -106,7 +106,7 @@ body {
 .cart-box {
   background-color: var(--bg-color);
   border: 1.5px solid var(--border-color);
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1.15rem;
   border-radius: 8px;
   font-size: 0.92rem;
   display: flex;
@@ -280,13 +280,13 @@ body {
 }
 
 /* ==========================================================================
-   5. SAVAT BOSILGANDA OCHILADIGAN MODAL (Cart Modal)
+   5. SAVAT MODALI (Cart Modal - Kengaytirilgan va qulay)
    ========================================================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(3px);
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -298,18 +298,18 @@ body {
   background-color: var(--surface-color);
   color: var(--text-main);
   border: 1px solid var(--border-color);
-  border-radius: 14px;
+  border-radius: 16px;
   width: 100%;
-  max-width: 420px;
-  padding: 1.25rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+  max-width: 520px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
   animation: modalFadeIn 0.2s ease-out;
 }
 
 @keyframes modalFadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.96);
   }
   to {
     opacity: 1;
@@ -322,12 +322,12 @@ body {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.85rem;
   margin-bottom: 1rem;
 }
 
 .modal-header h3 {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 700;
 }
 
@@ -335,87 +335,144 @@ body {
   background: none;
   border: none;
   color: var(--text-muted);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 1;
   cursor: pointer;
-  padding: 0 0.25rem;
+  padding: 0 0.35rem;
+  border-radius: 6px;
+  transition: all 0.2s;
 }
 
 .close-btn:hover {
   color: var(--text-main);
+  background-color: var(--bg-color);
 }
 
 .modal-body {
-  max-height: 260px;
+  max-height: 300px;
   overflow-y: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  padding-right: 0.35rem;
 }
 
 .cart-item-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 0;
+  padding: 0.75rem 0;
   border-bottom: 1px solid var(--border-color);
+  gap: 0.75rem;
 }
 
 .cart-item-row:last-child {
   border-bottom: none;
 }
 
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
 .item-name {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.05rem;
   text-transform: capitalize;
-  margin-right: 0.35rem;
+}
+
+.item-unit-price {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.qty-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .item-qty {
-  color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
 }
 
 .item-subtotal {
   font-weight: 700;
+  font-size: 1.05rem;
   color: var(--primary-color);
+  min-width: 85px;
+  text-align: right;
 }
 
 .empty-cart-text {
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 2.5rem 0;
   color: var(--text-muted);
+  font-size: 1rem;
 }
 
 .modal-footer {
   border-top: 1px solid var(--border-color);
-  padding-top: 0.85rem;
+  padding-top: 1rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-total-row {
+  display: flex;
+  align-items: baseline;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
 }
 
-.modal-total {
-  font-size: 1rem;
+.modal-total-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
-.modal-total strong {
+.modal-total-amount {
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--primary-color);
 }
 
 .modal-btns {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.65rem;
 }
 
 .modal-clear-btn {
+  flex: 1;
   background-color: transparent;
   color: #ef4444;
-  border: 1px solid #ef4444;
-  padding: 0.45rem 0.85rem;
-  border-radius: 6px;
+  border: 1.5px solid #ef4444;
+  padding: 0.7rem 0.85rem;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -425,18 +482,40 @@ body {
   color: #ffffff;
 }
 
-.modal-close-btn {
-  background-color: var(--primary-color);
+.modal-order-btn {
+  flex: 2;
+  background-color: #16a34a;
   color: #ffffff;
   border: none;
-  padding: 0.45rem 0.95rem;
-  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-order-btn:hover {
+  background-color: #15803d;
+}
+
+.modal-order-btn:active {
+  transform: scale(0.98);
+}
+
+.modal-close-btn {
+  flex: 1;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.7rem 0.85rem;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .modal-close-btn:hover {
-  background-color: var(--primary-hover);
+  border-color: var(--text-muted);
 }

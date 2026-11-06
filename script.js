@@ -34,9 +34,9 @@ const cartModal = document.getElementById("cartModal");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const modalCloseBtn = document.getElementById("modalCloseBtn");
 const modalClearBtn = document.getElementById("modalClearBtn");
+const modalOrderBtn = document.getElementById("modalOrderBtn");
 const cartItemsList = document.getElementById("cartItemsList");
 const modalTotal = document.getElementById("modalTotal");
-const modalOrderBtn = document.getElementById("modalOrderBtn");
 
 /* ==========================================================================
    3. JAMI NARXNI HISOBLASH (calcTotal funksiyasi)
@@ -67,7 +67,7 @@ function addToCart(index, btn) {
   // Har safar qo'shilganda jami narxni hisoblaymiz
   calcTotal();
 
-  // Tugmada qisqa tasdiq vizual ko'rinishi
+  // Tugmada qisqa tasdiq ko'rinishi
   if (btn) {
     const oldText = btn.textContent;
     btn.textContent = "Qo'shildi ✓";
@@ -217,6 +217,23 @@ modalClearBtn.addEventListener("click", function () {
   cartCount.textContent = 0;
   calcTotal();
   renderCartModal();
+});
+
+// Buyurtma berish tugmasi
+modalOrderBtn.addEventListener("click", function () {
+  if (cart.length === 0) {
+    alert("Savat bo'sh! Iltimos, avval mahsulot tanlang.");
+    return;
+  }
+  
+  const totalSum = modalTotal.textContent;
+  alert(`Rahmat! Buyurtmangiz qabul qilindi.\nJami to'lov: ${totalSum} so'm.`);
+  
+  // Savatni tozalab oynani yopamiz
+  cart = [];
+  cartCount.textContent = 0;
+  calcTotal();
+  closeCartModal();
 });
 
 // Tashqi qism bosilganda modalni yopish
