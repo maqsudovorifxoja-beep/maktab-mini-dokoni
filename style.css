@@ -1,0 +1,442 @@
+/* ==========================================================================
+   1. ASOSIY RANGLAR VA RESET (Light & Dark Mode)
+   ========================================================================== */
+:root {
+  --bg-color: #f1f5f9;
+  --surface-color: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #cbd5e1;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --badge-bg: #e2e8f0;
+  --badge-text: #334155;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode {
+  --bg-color: #0f172a;
+  --surface-color: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --primary-color: #3b82f6;
+  --primary-hover: #60a5fa;
+  --badge-bg: #334155;
+  --badge-text: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.5;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ==========================================================================
+   2. HEADER VA TEPADAGI PANEL (Header & Top Bar)
+   ========================================================================== */
+.header {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Dark Mode tugmasi */
+.theme-btn {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-btn:hover {
+  border-color: var(--primary-color);
+}
+
+/* Bosiladigan Savat statistikasi qutisi (Clickable Cart Box) */
+.cart-box {
+  background-color: var(--bg-color);
+  border: 1.5px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.cart-box:hover {
+  border-color: var(--primary-color);
+  background-color: var(--surface-color);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.cart-box:active {
+  transform: scale(0.98);
+}
+
+.cart-divider {
+  color: var(--border-color);
+}
+
+.cart-total-label strong {
+  color: var(--primary-color);
+}
+
+/* Qidiruv */
+.search-box {
+  margin-top: 1.25rem;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+  border-color: var(--primary-color);
+}
+
+/* ==========================================================================
+   3. TOIFA TUGMALARI (Category Filters)
+   ========================================================================== */
+.categories {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 0.55rem 1.15rem;
+  background-color: var(--surface-color);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.category-btn:hover {
+  color: var(--text-main);
+  border-color: var(--primary-color);
+}
+
+.category-btn.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+/* ==========================================================================
+   4. MAHSULOT KARTOCHKALARI (Product Cards Grid)
+   ========================================================================== */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-color);
+}
+
+.card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  margin-bottom: 0.75rem;
+}
+
+.card-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+}
+
+.card-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* «Savatga» tugmasi */
+.add-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.add-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.add-btn:active {
+  transform: scale(0.97);
+}
+
+.add-btn.added {
+  background-color: #16a34a !important;
+}
+
+/* Bo'sh holat */
+.empty-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  background-color: var(--surface-color);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+}
+
+/* ==========================================================================
+   5. SAVAT BOSILGANDA OCHILADIGAN MODAL (Cart Modal)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: var(--surface-color);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 420px;
+  padding: 1.25rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25);
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.25rem;
+}
+
+.close-btn:hover {
+  color: var(--text-main);
+}
+
+.modal-body {
+  max-height: 260px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.cart-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cart-item-row:last-child {
+  border-bottom: none;
+}
+
+.item-name {
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-right: 0.35rem;
+}
+
+.item-qty {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.item-subtotal {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.empty-cart-text {
+  text-align: center;
+  padding: 1.5rem 0;
+  color: var(--text-muted);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.modal-total {
+  font-size: 1rem;
+}
+
+.modal-total strong {
+  color: var(--primary-color);
+}
+
+.modal-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.modal-clear-btn {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-clear-btn:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.modal-close-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.45rem 0.95rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--primary-hover);
+}

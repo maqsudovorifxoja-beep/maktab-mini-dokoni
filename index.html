@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maktab Mini-Do'koni</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 1. Bosh qism (Header): Sarlavha, Dark Mode va Savat statistikasi -->
+    <header class="header">
+      <div class="header-top">
+        <h1 class="logo">🎒 Maktab Mini-Do'koni</h1>
+        
+        <div class="top-actions">
+          <button id="themeToggle" class="theme-btn" type="button">🌙 Tun rejimi</button>
+          
+          <!-- Bosiladigan Savat tugmasi (Clickable Cart Box) -->
+          <div class="cart-box" id="cartBox" role="button" tabindex="0" title="Savatni ko'rish uchun bosing">
+            <span class="cart-count-label">Savat: <strong id="cartCount">0</strong></span>
+            <span class="cart-divider">|</span>
+            <span class="cart-total-label">Jami: <strong id="cartTotal">0</strong> so'm</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="subtitle">O'quv qurollari, ichimliklar va shirinliklar</p>
+
+      <!-- Qidiruv maydoni -->
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Mahsulot nomini qidiring (ruchka, suv...)" autocomplete="off">
+      </div>
+    </header>
+
+    <!-- 2. Toifa tugmalari (Filter buttons) -->
+    <nav class="categories">
+      <button class="category-btn active" data-category="Hammasi">Hammasi</button>
+      <button class="category-btn" data-category="O'quv">O'quv</button>
+      <button class="category-btn" data-category="Ichimlik">Ichimlik</button>
+      <button class="category-btn" data-category="Shirinlik">Shirinlik</button>
+    </nav>
+
+    <!-- 3. Mahsulotlar ro'yxati (Products Grid) -->
+    <main>
+      <div id="productsContainer" class="products-grid">
+        <!-- Kartochkalar script.js orqali for sikli bilan chiziladi -->
+      </div>
+    </main>
+  </div>
+
+  <!-- 4. Savat bosilganda ochiladigan qulay oyna (Cart Modal) -->
+  <div id="cartModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🛒 Savatdagi mahsulotlar</h3>
+        <button id="closeModalBtn" class="close-btn" type="button" aria-label="Yopish">&times;</button>
+      </div>
+      <div id="cartItemsList" class="modal-body">
+        <!-- Mahsulotlar ro'yxati script.js orqali chiqadi -->
+      </div>
+      <div class="modal-footer">
+        <div class="modal-total">Jami: <strong id="modalTotal">0</strong> so'm</div>
+        <div class="modal-btns">
+          <button id="modalClearBtn" class="modal-clear-btn" type="button">Tozalash</button>
+          <button id="modalOrderBtn" class="modal-order-btn" type="button">Buyurtma berish</button>
+          <button id="modalCloseBtn" class="modal-close-btn" type="button">Yopish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
